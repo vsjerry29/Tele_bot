@@ -1,4 +1,7 @@
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+import os
+import logging
+from flask import Flask, request
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup , Bot
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes
 
 TOKEN = "7934096978:AAGZG2WydqqHtYiMC1-rKnG_Rnz_-Tsx1V0"
@@ -103,5 +106,6 @@ def main():
 
     app.run_polling()
 
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))  # Get Railway port
+    app.run(host="0.0.0.0", port=port)
